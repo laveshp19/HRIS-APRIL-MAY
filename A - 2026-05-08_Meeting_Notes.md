@@ -16,12 +16,12 @@ Discussion on the **Rights & Team Visibility Architecture** — specifically how
 ### 1. Current Problem — Incorrect Rights Definition
 
 - **Context:** Lavesh had written two SQL queries to populate staff lists:
-  1. **Query 1 (Team-based):** Fetch staff members who belong to a team (e.g., TeamID = 3, "Admin Alam") on which the logged-in user has rights.
+  1. **Query 1 (Team-based):** Fetch staff members who belong to a team (e.g., TeamID = 3, "Admin LM") on which the logged-in user has rights.
   2. **Query 2 (ReportingTo-based):** Fetch staff members who report to a specific person (e.g., Arti Soni) regardless of which team they belong to.
 - **Problem identified:** The data definition was **incorrect** — staff members were reporting to Arti Soni, but the rights had been given on a **different team** than the one those staff actually belonged to.
-  - Example: Arti Soni has rights on the "Admin Alam" team (TeamID 3), but some staff who report to her are in a **different** team. This means:
-    - The team-based query returns only the 4 staff in Admin Alam team.
-    - The ReportingTo query returns staff who report to Arti Soni but are NOT in the Admin Alam team.
+  - Example: Arti Soni has rights on the "Admin LM" team (TeamID 3), but some staff who report to her are in a **different** team. This means:
+    - The team-based query returns only the 4 staff in Admin LM team.
+    - The ReportingTo query returns staff who report to Arti Soni but are NOT in the Admin LM team.
     - This mismatch creates confusion — should we use team-based or ReportingTo-based logic?
 
 ### 2. How Rights Should Ideally Work — Senior's Clarification
